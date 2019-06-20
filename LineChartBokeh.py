@@ -27,26 +27,9 @@ Line_df = pd.read_excel(path,sheet_name='Line')
 
 output_file('Line_chart.html',
                 title='Line_chart_for_Processes')
-
-'''
-aapl = np.array(Line_df['Process1'])
-aapl_dates = np.array(Line_df['Date'], dtype=np.datetime64)
-
-source = ColumnDataSource(data=dict(x=aapl_dates,y=aapl))
-
-output_file('Correlation_of_headcount_with_Attrition.html',
-                title='Correlation of headcount with billable')
-# show the tooltip
-hover = HoverTool(tooltips=[
-            ("headcount with billable %", "@y"),
-            ])
-source = ColumnDataSource(data=dict(x=aapl_dates,
-                                    y=aapl))
-# show the tooltip
-hover = HoverTool(tooltips=[
-            ("headcount with Attrition %", "@y"),
-            ])
-'''
+N=30
+x_min = Line_df['Date'].min() - pd.Timedelta(days=0.1*N)
+x_max = Line_df['Date'].max() + pd.Timedelta(days=0.1*N)
 
 print(Line_df.columns,Line_df.dtypes)
 source = ColumnDataSource(data=Line_df)
@@ -66,6 +49,7 @@ hover = HoverTool(tooltips=[
             ])
 
 l = figure(title="Process execution time",
+           x_range = (x_min, x_max),
            #logo=None,
            x_axis_type="datetime",tools=[hover])
 l.circle('Date','Process_1', size=3, color='red',source=source_hover,legend='% Process_1')
