@@ -16,7 +16,7 @@ from bokeh.models import ColumnDataSource,DatetimeTickFormatter,LabelSet
 from bokeh.models import HoverTool, WheelZoomTool,ResetTool,SaveTool
 from bokeh.models.widgets import Panel, Tabs
 
-path = "C:/Users/KS5046082/Documents/Python Scripts/Sample.xlsx"
+path = "C:/Users/khushal/Documents/Python Scripts/Baji Yakkati Project/Sample_updated.xlsx"
 Line_df = pd.read_excel(path,sheet_name='Line')
 #Bar_df = pd.read_excel(path,sheet_name='Bar')
 
@@ -183,5 +183,4 @@ tab_Line_Days_monthly = Panel(child=l_monthly, title = 'Monthly process data')
 tabs = Tabs(tabs=[tab_Line_Days10,tab_Line_Days_monthly,tab_overall_process])
 script_line, div_line = components(tabs)
 show(tabs)
-print(script_line, div_line)
-
+#print(script_line, div_line)

@@ -75,29 +75,30 @@ def get_y_range_values():
     return y_max,y_min
 
 max_value,min_value = get_y_range_values()
-# show the tooltip
-hover = HoverTool(tooltips=[("Process_1", "@Process_1"),
-                            ("Process_2", "@Process_2")
-])
-p = figure(plot_width=950, plot_height=600,tools=[hover],
+    
+p = figure(plot_width=950, plot_height=600,
+           #tools=[hover],
+           tools="hover",tooltips="@ $name: @$name",
            x_range=(x_min,x_max),
            y_range=(min_value,max_value),
            #logo=None,
            title="Rec count for Date",x_axis_type="datetime") 
 
         
-p.vbar(x=dodge('Date_list',value=-0.5,range=p.x_range),
+p.vbar(x=dodge('Date_list',value=max_value,range=p.x_range),
        top='Process_1',
        source=source_hover,
        color="red",bottom=0, 
        legend=value('Process_1'),
+       name="Process_1",
        width=get_width())
 
-p.vbar(x=dodge('Date_list',value=0.5,range=p.x_range),
+p.vbar(x=dodge('Date_list',value=max_value,range=p.x_range),
        top='Process_2',
        source=source_hover,
        color="blue",bottom=0, 
        legend=value('Process_2'),
+       name="Process_2",
        width=get_width())
 
 p.add_tools(ResetTool(),SaveTool(),WheelZoomTool())
@@ -106,6 +107,8 @@ p.xgrid.grid_line_color = None
 p.legend.location = "top_right"
 p.legend.click_policy = "hide"
 p.legend.orientation = "horizontal"
+p.toolbar.logo = None
+p.sizing_mode = "scale_both"
 
 
 script0, div0 = components(p)
