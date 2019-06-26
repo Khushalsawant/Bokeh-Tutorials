@@ -30,7 +30,7 @@ from bokeh.palettes import Spectral6
 from bokeh.models.widgets import Panel, Tabs
 from bokeh.embed import components
 
-path = "C:/Users/khushal/Documents/Python Scripts/Baji Yakkati Project/Sample_updated.xlsx"
+path = "C:/Users/KS5046082/Documents/Python Scripts/Sample.xlsx"
 #Line_df = pd.read_excel(path,sheet_name='Line')
 Bar_df = pd.read_excel(path,sheet_name='Bar')
 #print(Bar_df.dtypes)
@@ -107,13 +107,16 @@ tab_10_Days_process = Panel(child=p, title = '10_Days_process')
 '''
 Graph for Monthly process
 '''
-
+Bar_df['Date'] = Bar_df['Date'].dt.strftime('%m/%Y')
 Bar_df_grpby = Bar_df.groupby(['Date']).sum()
 Bar_df_grpby.reset_index(inplace=True)
+print(Bar_df_grpby)
 Date_list1 = Bar_df_grpby['Date'].tolist()
-Date_list1 = [d.strftime('%m-%d-%Y') for d in Date_list1]
+
+#Date_list1 = [d.strftime('%m-%d-%Y') for d in Date_list1]
 Process_11 = Bar_df_grpby['Process1'].tolist()
 Process_21 = Bar_df_grpby['Process2'].tolist()
+
 
 process_type = ['Process1','Process2']
 
@@ -122,7 +125,7 @@ process_type = ['Process1','Process2']
 data1={'Date_list':Date_list1,
       'Process_1':Process_11,
       'Process_2':Process_21}
-
+print(data1)
 source1=ColumnDataSource(data=data1)
 
 def get_y_range_values():
@@ -155,11 +158,11 @@ p_all = figure(x_range=Date_list, y_range=(min_value,max_value),
            tools=[hover_value])#,tooltips="@ $name: @$name")
            #toolbar_location=None, tools="")
 
-p_all.vbar(x=dodge('Date_list', -0.25, range=p.x_range), top='Process_1', width=0.2, source=source1,
-       color="#c9d9d3", legend=value('Process_1'))
+p_all.vbar(x=dodge('Date_list', -0.25, range=p.x_range), top='Process_1',
+           width=0.2, source=source1, color="#c9d9d3", legend=value('Process_1'))
 
-p_all.vbar(x=dodge('Date_list',  0.0,  range=p.x_range), top='Process_2', width=0.2, source=source1,
-       color="#718dbf", legend=value('Process_2'))
+p_all.vbar(x=dodge('Date_list',  0.0,  range=p.x_range), top='Process_2',
+           width=0.2, source=source1,color="#718dbf", legend=value('Process_2'))
 
 p_all.x_range.range_padding = 0.1
 p_all.xgrid.grid_line_color = None
@@ -172,7 +175,7 @@ p_all.legend.orientation = "horizontal"
 p_all.sizing_mode = "scale_both"
 
 
-tab_Overall_process = Panel(child=p_all, title = 'Overall_process')
+tab_Overall_process = Panel(child=p_all, title = 'Monthly_process')
 
 tabs = Tabs(tabs=[tab_Overall_process,tab_10_Days_process])
 script_line, div_line = components(tabs)
