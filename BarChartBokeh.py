@@ -45,10 +45,6 @@ Date_list = [d.strftime('%m-%d-%Y') for d in Date_list]
 Process_1 = Bar_df['Process1'].head(10).tolist()
 Process_2 = Bar_df['Process2'].head(10).tolist()
 
-process_type = ['Process1','Process2']
-
-#########################
-
 data1={'Date_list':Date_list,
       'Process_1':Process_1,
       'Process_2':Process_2}
@@ -111,28 +107,22 @@ Bar_df['Date'] = Bar_df['Date'].dt.strftime('%m/%Y')
 Bar_df_grpby = Bar_df.groupby(['Date']).sum()
 Bar_df_grpby.reset_index(inplace=True)
 print(Bar_df_grpby)
-Date_list1 = Bar_df_grpby['Date'].tolist()
 
-#Date_list1 = [d.strftime('%m-%d-%Y') for d in Date_list1]
+Date_list1 = Bar_df_grpby['Date'].tolist()
 Process_11 = Bar_df_grpby['Process1'].tolist()
 Process_21 = Bar_df_grpby['Process2'].tolist()
 
+data11={'Date_list1':Date_list1,
+      'Process_11':Process_11,
+      'Process_21':Process_21}
+print(data11)
+source11=ColumnDataSource(data=data11)
 
-process_type = ['Process1','Process2']
-
-#########################
-
-data1={'Date_list':Date_list1,
-      'Process_1':Process_11,
-      'Process_2':Process_21}
-print(data1)
-source1=ColumnDataSource(data=data1)
-
-def get_y_range_values():
-    min_value_P1 = min(source1.data['Process_1'])
-    max_value_P1 = max(source1.data['Process_1'])
-    min_value_P2 = min(source1.data['Process_2'])
-    max_value_P2 = max(source1.data['Process_2'])
+def get_y_range_values_monthly():
+    min_value_P1 = min(source11.data['Process_11'])
+    max_value_P1 = max(source11.data['Process_11'])
+    min_value_P2 = min(source11.data['Process_21'])
+    max_value_P2 = max(source11.data['Process_21'])
     
     if min_value_P1 > min_value_P2:
         y_min = min_value_P2 - min_value_P2*0.5
@@ -145,24 +135,25 @@ def get_y_range_values():
         y_max = max_value_P2 + max_value_P2*0.5
     return y_max,y_min
 
-max_value,min_value = get_y_range_values()
+max_value1,min_value1 = get_y_range_values_monthly()
+print(max_value1,min_value1)
 
-hover_value =  HoverTool(tooltips=[
-            ("% Process_1", "@Process_1"),
-            ("% Process_2", "@Process_2"),
+hover_value_monthly =  HoverTool(tooltips=[
+            ("% Process_11", "@Process_11"),
+            ("% Process_21", "@Process_21"),
             ])
 
-p_all = figure(x_range=Date_list, y_range=(min_value,max_value),
+p_all = figure(x_range=Date_list1, y_range=(0,max_value1),
            plot_height=350,plot_width=550,
            title="Rec Counts by Date",
-           tools=[hover_value])#,tooltips="@ $name: @$name")
+           tools=[hover_value_monthly])#,tooltips="@ $name: @$name")
            #toolbar_location=None, tools="")
 
-p_all.vbar(x=dodge('Date_list', -0.25, range=p.x_range), top='Process_1',
-           width=0.2, source=source1, color="#c9d9d3", legend=value('Process_1'))
+p_all.vbar(x=dodge('Date_list1', -0.25, range=p_all.x_range), top='Process_11',
+           width=0.2, source=source11, color="#c9d9d3", legend=value('Process_11'))
 
-p_all.vbar(x=dodge('Date_list',  0.0,  range=p.x_range), top='Process_2',
-           width=0.2, source=source1,color="#718dbf", legend=value('Process_2'))
+p_all.vbar(x=dodge('Date_list1',  0.0,  range=p_all.x_range), top='Process_21',
+           width=0.2, source=source11,color="#718dbf", legend=value('Process_21'))
 
 p_all.x_range.range_padding = 0.1
 p_all.xgrid.grid_line_color = None
@@ -173,7 +164,6 @@ p_all.title_location = "above"
 p_all.toolbar.logo = None
 p_all.legend.orientation = "horizontal"
 p_all.sizing_mode = "scale_both"
-
 
 tab_Overall_process = Panel(child=p_all, title = 'Monthly_process')
 
