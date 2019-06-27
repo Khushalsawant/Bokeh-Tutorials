@@ -1,0 +1,65 @@
+[
+              {
+                "odate": "2019-06-16",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "40",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "40",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "40"                
+              },
+			  {
+                "odate": "2019-06-17",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "45",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "38",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "42"                
+              },
+              {
+                "odate": "2019-06-18",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "40"                
+              },
+              {
+                "odate": "2019-06-19",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "45",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "38",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "42"                
+              },
+			  {
+                "odate": "2019-06-20",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "40"               
+              },
+              {
+                "odate": "2019-06-21",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "46",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "44",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "48",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "49"                
+              },
+              {
+                "odate": "2019-06-22",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "44",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "48",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "46",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "44"                
+              },
+			  {
+                "odate": "2019-06-23",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "50",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "40"                
+              },
+              {
+                "odate": "2019-06-24",
+                "SYS1-PYDATA-ALIP-DOMAIN-LOAD": "40",
+                "SYS1-PYDATA-AS400-DOMAIN-LOAD": "40",
+				"SYS1-PYDATA-OPAS-DOMAIN-LOAD": "40",
+                "SYS1-PYDATA-PRODUCER-REP-DOMAIN-LOAD": "40"     
+              }
+]
