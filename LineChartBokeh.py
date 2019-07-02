@@ -49,7 +49,7 @@ def Line_chart_generation():
                     title='Line_chart_for_Processes')
     N=10
     x_min = Line_df['odate'].min() - pd.Timedelta(days=0.1*N)
-    x_max = Line_df['odate'].max() + pd.Timedelta(days=0.1*N)
+    x_max = Line_df['odate'].max() #+ pd.Timedelta(days=0.1*N)
     
     
     ''' 
@@ -70,7 +70,7 @@ def Line_chart_generation():
                 (" SYS1_PYDATA_PRODUCER_REP_DOMAIN_LOAD", "@SYS1_PYDATA_PRODUCER_REP_DOMAIN_LOAD"),
                 ])
     x_min = Line_df['odate'].head(10).min() - pd.Timedelta(days=0.1*N)
-    x_max = Line_df['odate'].head(10).max() + pd.Timedelta(days=0.1*N)
+    x_max = Line_df['odate'].head(10).max() #+ pd.Timedelta(days=0.1*N)
     l_10 = figure(title="Process execution time",
                x_range = (x_min, x_max),
                #logo=None,
@@ -169,3 +169,25 @@ if __name__ == "__main__":
 else: 
     print("Executed when imported")
     script_line_chart, div_line_chart = Line_chart_generation()
+'''
+"fixed"
+Component is not responsive. It will retain its original width and height regardless of any subsequent browser window resize events.
+
+"stretch_width"
+Component will responsively resize to stretch to the available width, without maintaining any aspect ratio. The height of the component depends on the type of the component and may be fixed or fit to component’s contents.
+
+"stretch_height"
+Component will responsively resize to stretch to the available height, without maintaining any aspect ratio. The width of the component depends on the type of the component and may be fixed or fit to component’s contents.
+
+"stretch_both"
+Component is completely responsive, independently in width and height, and will occupy all the available horizontal and vertical space, even if this changes the aspect ratio of the component.
+
+"scale_width"
+Component will responsively resize to stretch to the available width, while maintaining the original or provided aspect ratio.
+
+"scale_height"
+Component will responsively resize to stretch to the available height, while maintaining the original or provided aspect ratio.
+
+"scale_both"
+Component will responsively resize to both the available width and height, while maintaining the original or provided aspect ratio.
+'''
