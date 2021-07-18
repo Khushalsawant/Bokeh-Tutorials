@@ -155,6 +155,9 @@ def calculate_heat_trasnfer_maptplotlb(constant_field='Temperature'):
         ax.xaxis.set_major_formatter(FormatStrFormatter('% 1.2f'))
         #ax.yaxis.set_major_formatter(FormatStrFormatter('% 1.2f'))
         ax.grid(True)
+        for i in range(len(y)):
+            #ax.text(x[i], y[i]+y[i]/10, "y={0}".format(round(y[i],2)), ha="center")
+            ax.text(x[i], y[i]+y[0]/10, "%1.2f" %y[i], ha="center")
         plt.savefig("Area vs Heat Transfer.png")
         plt.show()
     elif constant_field=='heat_transfer':
@@ -179,6 +182,9 @@ def calculate_heat_trasnfer_maptplotlb(constant_field='Temperature'):
         ax.xaxis.set_major_formatter(FormatStrFormatter('% 1.2f'))
         #ax.yaxis.set_major_formatter(FormatStrFormatter('% 1.2f'))
         ax.grid(True)
+        for i in range(len(y)):
+            #ax.text(x[i], y[i]+y[i]/10, "y={0}".format(round(y[i],2)), ha="center")
+            ax.text(x[i], y[i]+y[0]/100, "%1.2f" %y[i], ha="center")
         plt.savefig("Area vs Temperature.png")
         plt.show()
 
